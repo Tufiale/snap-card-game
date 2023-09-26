@@ -28,13 +28,22 @@ public class Card {
         this.value = value;
     }
 
+    public Card(String suit) {
+        this.suit = suit;
+    }
+
+    public Card(String suit, String symbol) {
+        this.suit = suit;
+        this.symbol = symbol;
+    }
+
     public Card(String suit, String symbol, int value) {
         this.suit = suit;
         this.symbol = symbol;
         this.value = value;
     }
 
-    public String toString(){
+    public String toString() {
         return symbol + " of " + suit;
     }
 
