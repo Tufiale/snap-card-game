@@ -17,12 +17,12 @@ public class Snap extends CardGame {
     }
 
     public void playGame() {
-        PlayerUtils.introPrint();
-        System.out.println("Player 1 - Enter your name: ");
+        GameUtils.introPrint();
+        System.out.println("******** Player 1 - Enter your name: ********");
         player1 = scanner.nextLine();
-        System.out.println("Player 2 - Enter your name here: ");
+        System.out.println("******** Player 2 - Enter your name: ********");
         player2 = scanner.nextLine();
-        System.out.println("Players: " + player1 + " and " + player2);
+        System.out.println("Players: " + "\u001B[33m" + player1 + "\u001B[0m" + " and " + "\u001B[34m" + player2 + "\u001B[0m");
         System.out.println("Press enter to take your turn " + player1);
 
         while (!gameOver) {
@@ -31,11 +31,11 @@ public class Snap extends CardGame {
             previousCard = dealCard();
             scanner.nextLine();
             Card card = dealCard();
-            if (deckOfCards.size() >= 2) {
-                if (card.getSymbol().equals(previousCard.getSymbol())) {
+
+                if (card.getValue() == previousCard.getValue()) {
                     snapOpportunity = true;
-                }
-            }
+                } else {snapOpportunity=false;}
+
             if (snapOpportunity) {
                 System.out.println("Snap opportunity! Type 'snap' within 2 seconds to win: ");
                 String input = scanner.nextLine();
@@ -45,6 +45,7 @@ public class Snap extends CardGame {
                     break;
                 } else {
                     System.out.println("Time's up! You missed the opportunity to snap.");
+                    snapOpportunity = false;
                 }
             }
         }

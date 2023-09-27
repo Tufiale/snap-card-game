@@ -16,10 +16,11 @@ public abstract class CardGame {
     private void populateDeck() {
         String[] suits = {"♥", "♣", "♦", "♠"};
         String[] symbols = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+        int[] values = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 
         for (String suit : suits) {
             for (int i = 0; i < symbols.length; i++) {
-                Card card = new Card(suit, symbols[i], i + 2);
+                Card card = new Card(suit, symbols[i], values[i]);
                 deckOfCards.add(card);
             }
         }
@@ -35,7 +36,7 @@ public abstract class CardGame {
             System.out.println("Dealing card: " + topCard);
             return topCard;
         } else {
-            System.out.println("No more cards in the deck, son!");
+            System.out.println("No more cards in the deck, son!...\u001B[31m maybe do something productive?\u001B[0m");
             return null;
         }
     }
